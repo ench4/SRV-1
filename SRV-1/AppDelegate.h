@@ -7,9 +7,18 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "Calculating.h"
+#import "Sensor.h"
+#import "SensorController.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
+{
+    Calculating* calc;
+    Sensor* sensor;
+    SensorController* sensorController;
+};
 
 @property (assign) IBOutlet NSWindow *window;
+@property (weak) IBOutlet NSObjectController *valueController;
 
 @end

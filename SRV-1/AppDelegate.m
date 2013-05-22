@@ -10,9 +10,24 @@
 
 @implementation AppDelegate
 
+-(id) init
+{
+    self=[super init];
+    if (self)
+    {
+        calc=[[Calculating alloc]init];
+        sensor=[[Sensor alloc]init];
+        sensorController=[[SensorController alloc]init];
+        sensorController.sensor=sensor;
+        calc.delegate=sensorController;
+    }
+    return self;
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
+    NSThread* SensorControllerThread=[[NSThread alloc]initWithTarget:sensorController selector:@selector(run) object:nil];
+    [SensorControllerThread start];
 }
 
 @end

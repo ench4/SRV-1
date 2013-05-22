@@ -13,6 +13,9 @@
 		6C28649317325BFF002230AE /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6C28649117325BFF002230AE /* Credits.rtf */; };
 		6C28649617325BFF002230AE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C28649517325BFF002230AE /* AppDelegate.m */; };
 		6C28649917325BFF002230AE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C28649717325BFF002230AE /* MainMenu.xib */; };
+		6C2864A117325C40002230AE /* Sensor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C2864A017325C40002230AE /* Sensor.m */; };
+		6C2864A417325CE9002230AE /* SensorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C2864A317325CE9002230AE /* SensorController.m */; };
+		6C2864A71732607E002230AE /* Calculating.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C2864A61732607E002230AE /* Calculating.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,12 @@
 		6C28649417325BFF002230AE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6C28649517325BFF002230AE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6C28649817325BFF002230AE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		6C28649F17325C40002230AE /* Sensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sensor.h; sourceTree = "<group>"; };
+		6C2864A017325C40002230AE /* Sensor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sensor.m; sourceTree = "<group>"; };
+		6C2864A217325CE9002230AE /* SensorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorController.h; sourceTree = "<group>"; };
+		6C2864A317325CE9002230AE /* SensorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorController.m; sourceTree = "<group>"; };
+		6C2864A51732607E002230AE /* Calculating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculating.h; sourceTree = "<group>"; };
+		6C2864A61732607E002230AE /* Calculating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculating.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +93,12 @@
 			children = (
 				6C28649417325BFF002230AE /* AppDelegate.h */,
 				6C28649517325BFF002230AE /* AppDelegate.m */,
+				6C28649F17325C40002230AE /* Sensor.h */,
+				6C2864A017325C40002230AE /* Sensor.m */,
+				6C2864A217325CE9002230AE /* SensorController.h */,
+				6C2864A317325CE9002230AE /* SensorController.m */,
+				6C2864A51732607E002230AE /* Calculating.h */,
+				6C2864A61732607E002230AE /* Calculating.m */,
 				6C28649717325BFF002230AE /* MainMenu.xib */,
 				6C28648917325BFF002230AE /* Supporting Files */,
 			);
@@ -168,6 +183,9 @@
 			files = (
 				6C28648F17325BFF002230AE /* main.m in Sources */,
 				6C28649617325BFF002230AE /* AppDelegate.m in Sources */,
+				6C2864A117325C40002230AE /* Sensor.m in Sources */,
+				6C2864A417325CE9002230AE /* SensorController.m in Sources */,
+				6C2864A71732607E002230AE /* Calculating.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
