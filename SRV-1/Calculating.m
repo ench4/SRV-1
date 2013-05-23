@@ -16,7 +16,7 @@
     self=[super init];
     if (self)
     {
-        s=1.0;
+        s=0.2;
     }
     return self;
 }
@@ -41,6 +41,7 @@
 -(void) updateH
 {
     self.h+=[self calc];
+    [self.sharedWaterLevel performSelector:@selector(addObject:) onThread:[NSThread mainThread] withObject:[NSNumber numberWithFloat:self.h] waitUntilDone:NO];
 }
 
 @end

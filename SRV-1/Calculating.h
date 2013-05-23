@@ -28,4 +28,8 @@
 -(void) updateH;
 -(float) calc;
 
+//для вывода
+
+@property NSArrayController* sharedWaterLevel;
+
 @end

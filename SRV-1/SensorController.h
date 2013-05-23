@@ -24,6 +24,7 @@
     SEL calcSelector;
     NSTimer* timer;
     NSRunLoop* loop;
+    double time;
 };
 
 @property id<SensorProtocol> sensor;
@@ -32,5 +33,10 @@
 -(void) pushValueToBuffer;
 -(void) loop;
 -(void) run;
+
+//Данные для вывода
+
+@property NSArrayController* sharedNoisedSignal;
+@property NSArrayController* sharedFiltredSignal;
 
 @end

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C0D3911174D44E4002E0681 /* Engine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0D390A174D44E4002E0681 /* Engine.m */; };
+		6C0D3912174D44E4002E0681 /* EngineSensor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0D390C174D44E4002E0681 /* EngineSensor.m */; };
+		6C0D3913174D44E4002E0681 /* PIDController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0D390E174D44E4002E0681 /* PIDController.m */; };
+		6C0D3914174D44E4002E0681 /* SignalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0D3910174D44E4002E0681 /* SignalView.m */; };
 		6C28648317325BFF002230AE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C28648217325BFF002230AE /* Cocoa.framework */; };
 		6C28648D17325BFF002230AE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6C28648B17325BFF002230AE /* InfoPlist.strings */; };
 		6C28648F17325BFF002230AE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C28648E17325BFF002230AE /* main.m */; };
@@ -19,6 +23,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6C0D3909174D44E4002E0681 /* Engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Engine.h; sourceTree = "<group>"; };
+		6C0D390A174D44E4002E0681 /* Engine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Engine.m; sourceTree = "<group>"; };
+		6C0D390B174D44E4002E0681 /* EngineSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineSensor.h; sourceTree = "<group>"; };
+		6C0D390C174D44E4002E0681 /* EngineSensor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineSensor.m; sourceTree = "<group>"; };
+		6C0D390D174D44E4002E0681 /* PIDController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIDController.h; sourceTree = "<group>"; };
+		6C0D390E174D44E4002E0681 /* PIDController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIDController.m; sourceTree = "<group>"; };
+		6C0D390F174D44E4002E0681 /* SignalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignalView.h; sourceTree = "<group>"; };
+		6C0D3910174D44E4002E0681 /* SignalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignalView.m; sourceTree = "<group>"; };
 		6C28647F17325BFF002230AE /* SRV-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SRV-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C28648217325BFF002230AE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		6C28648517325BFF002230AE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -52,6 +64,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6C0D3915174D4576002E0681 /* Sensors */ = {
+			isa = PBXGroup;
+			children = (
+				6C0D3918174D4844002E0681 /* For engine sensor */,
+				6C0D390B174D44E4002E0681 /* EngineSensor.h */,
+				6C0D390C174D44E4002E0681 /* EngineSensor.m */,
+				6C28649F17325C40002230AE /* Sensor.h */,
+				6C2864A017325C40002230AE /* Sensor.m */,
+			);
+			name = Sensors;
+			sourceTree = "<group>";
+		};
+		6C0D3916174D45AC002E0681 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6C0D390F174D44E4002E0681 /* SignalView.h */,
+				6C0D3910174D44E4002E0681 /* SignalView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		6C0D3918174D4844002E0681 /* For engine sensor */ = {
+			isa = PBXGroup;
+			children = (
+				6C0D3909174D44E4002E0681 /* Engine.h */,
+				6C0D390A174D44E4002E0681 /* Engine.m */,
+				6C0D390D174D44E4002E0681 /* PIDController.h */,
+				6C0D390E174D44E4002E0681 /* PIDController.m */,
+			);
+			name = "For engine sensor";
+			sourceTree = "<group>";
+		};
 		6C28647617325BFF002230AE = {
 			isa = PBXGroup;
 			children = (
@@ -93,8 +137,8 @@
 			children = (
 				6C28649417325BFF002230AE /* AppDelegate.h */,
 				6C28649517325BFF002230AE /* AppDelegate.m */,
-				6C28649F17325C40002230AE /* Sensor.h */,
-				6C2864A017325C40002230AE /* Sensor.m */,
+				6C0D3916174D45AC002E0681 /* Views */,
+				6C0D3915174D4576002E0681 /* Sensors */,
 				6C2864A217325CE9002230AE /* SensorController.h */,
 				6C2864A317325CE9002230AE /* SensorController.m */,
 				6C2864A51732607E002230AE /* Calculating.h */,
@@ -186,6 +230,10 @@
 				6C2864A117325C40002230AE /* Sensor.m in Sources */,
 				6C2864A417325CE9002230AE /* SensorController.m in Sources */,
 				6C2864A71732607E002230AE /* Calculating.m in Sources */,
+				6C0D3911174D44E4002E0681 /* Engine.m in Sources */,
+				6C0D3912174D44E4002E0681 /* EngineSensor.m in Sources */,
+				6C0D3913174D44E4002E0681 /* PIDController.m in Sources */,
+				6C0D3914174D44E4002E0681 /* SignalView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +369,7 @@
 				6C28649E17325BFF002230AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

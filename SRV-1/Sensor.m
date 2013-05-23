@@ -10,6 +10,7 @@
 
 @implementation Sensor
 
+
 -(id) init
 {
     self=[super init];
@@ -22,16 +23,32 @@
 
 -(float) speedValue
 {
-    float result;
+    double result;
     double deltaTime=[NSDate timeIntervalSinceReferenceDate]-time;
-    if (deltaTime<2.0) result=5.0/64.0*deltaTime;
-    if (deltaTime>=2.0 && deltaTime<8.0) result=50.0/64.0;
-    if (deltaTime>=8.0) result=100.0/64.0-deltaTime*5.0/64.0;
+    if (deltaTime<2.0) result=25.0/16.0*deltaTime;
+    if (deltaTime>=2.0 && deltaTime<8.0) result=25.0/8.0;
+    if (deltaTime>=8.0) result=125.0/8.0-deltaTime*25.0/16.0;
+    if (deltaTime>10) {
+        [[NSNotificationCenter defaultCenter]postNotification:[NSNotification notificationWithName:@"complete" object:nil]];
+        [NSThread exit];
+    }
+    float pureResult=result;
     
     //тут внести шум
     NSLog(@"%f",result);
     
+    [self performSelector:@selector(addNoiseError:) onThread:[NSThread mainThread] withObject:[NSNumber numberWithDouble: fabs(pureResult-result) ]waitUntilDone:YES];
     return result;
+}
+
+-(void) addNoiseError:(NSNumber *)e
+{
+    _sharedNoiseError+=[e doubleValue];
+}
+
+-(double) sharedNoiseError
+{
+    return _sharedNoiseError;
 }
 
 @end

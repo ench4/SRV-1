@@ -17,6 +17,9 @@
 
 @implementation SensorController
 
+@synthesize sharedFiltredSignal;
+@synthesize sharedNoisedSignal;
+
 -(id) init
 {
     self=[super init];
@@ -27,16 +30,25 @@
         queue=[[NSOperationQueue alloc]init];
         queue.maxConcurrentOperationCount=1;
         loop=nil;
+        time=[NSDate timeIntervalSinceReferenceDate];
     }
     return self;
 }
 
 -(void) pushValueToBuffer
 {
-    NSLog(@"pushing");
+    //NSLog(@"pushing");
+    double speed=[self.sensor speedValue];
+
+    double now=[NSDate timeIntervalSinceReferenceDate];
+    double dt=now-time;
+    time=now;
+    NSNumber* v=[NSNumber numberWithFloat:speed*dt];
     [bufferLock lock];
-    [buffer addObject:[NSNumber numberWithFloat:[self.sensor speedValue]]];
+    [buffer addObject:v];
     [bufferLock unlock];
+    
+    [self.sharedNoisedSignal performSelector:@selector(addObject:) onThread:[NSThread mainThread] withObject:[NSNumber numberWithFloat:speed] waitUntilDone:NO];
     
     NSInvocationOperation* operation=[[NSInvocationOperation alloc]initWithTarget:calculator selector:calcSelector object:nil];
     [queue addOperation:operation];
@@ -44,7 +56,7 @@
 
 -(float) pullValueFromBuffer
 {
-    NSLog(@"pulling");
+    //NSLog(@"pulling");
     [bufferLock lock];
     if ([buffer count]==0)
     {
@@ -56,6 +68,8 @@
     
     //отфильтровать шум
     
+    
+    [self.sharedFiltredSignal performSelector:@selector(addObject:) onThread:[NSThread mainThread] withObject:x waitUntilDone:NO];
     return [x floatValue];
 }
 
