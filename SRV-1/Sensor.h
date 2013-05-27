@@ -12,14 +12,12 @@
 @interface Sensor : NSObject<SensorProtocol>
 {
     double time;
-    double _sharedNoiseError;
 }
 
 -(float) speedValue;
 
 //для вывода
 
--(void)addNoiseError:(NSNumber*) e;
--(double)sharedNoiseError;
+@property NSArrayController* sharedPureArray;
 
 @end

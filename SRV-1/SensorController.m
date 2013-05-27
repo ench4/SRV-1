@@ -44,6 +44,7 @@
     double dt=now-time;
     time=now;
     NSNumber* v=[NSNumber numberWithFloat:speed*dt];
+    printf("%f\n",[v floatValue]);
     [bufferLock lock];
     [buffer addObject:v];
     [bufferLock unlock];
@@ -67,6 +68,7 @@
     [bufferLock unlock];
     
     //отфильтровать шум
+    x=[NSNumber numberWithFloat:[self filterNewValue:[x floatValue]]];
     
     
     [self.sharedFiltredSignal performSelector:@selector(addObject:) onThread:[NSThread mainThread] withObject:x waitUntilDone:NO];
@@ -94,6 +96,38 @@
     [loop addTimer:timer forMode:NSRunLoopCommonModes];
     [self loop];
     [loop run];
+}
+
+-(float) filterNewValue:(float)newValue
+{
+    static float x=INFINITY;
+    if (x==INFINITY) x=newValue/2;
+    
+    x=x*0.5+newValue*0.5;
+    return x;
+    
+    
+    /*static NSMutableArray* array=nil;
+        if (array==nil) array=[[NSMutableArray alloc]init];
+    [array addObject:[NSNumber numberWithFloat:newValue]];
+    float sum=0;
+    for (NSNumber* x in array) {
+        sum+=[x floatValue];
+    }
+    sum/=[array count];
+    
+    [array removeLastObject];
+    [array addObject:[NSNumber numberWithFloat:sum]];
+    
+    if ([array count]>1 ) [array removeObjectAtIndex:0];
+    
+    return sum;*/
+    
+}
+
+-(void) wait
+{
+    [queue waitUntilAllOperationsAreFinished];
 }
 
 @end

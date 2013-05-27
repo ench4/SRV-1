@@ -34,6 +34,10 @@
 -(void) loop;
 -(void) run;
 
+//для синхронизации
+
+-(void) wait;
+
 //Данные для вывода
 
 @property NSArrayController* sharedNoisedSignal;

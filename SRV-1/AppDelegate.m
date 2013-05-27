@@ -64,14 +64,18 @@
     
     controller.engine=engine;
     controller.neededValue=50;
+#else
+    sensor.sharedPureArray=self.pureArrayController;
 #endif
     sensorController.sharedNoisedSignal=self.noisedArrayController;
+    sensorController.sharedFiltredSignal=self.filtredArrayController;
+    
+    
     calc.sharedWaterLevel=self.waterLevelController;
     
     [self.signalView bind:@"vector" toObject:self.noisedArrayController withKeyPath:@"arrangedObjects.floatValue" options:nil];
     [self.waterLevelView bind:@"vector" toObject:self.waterLevelController withKeyPath:@"arrangedObjects.floatValue" options:nil];
-    //[self.noisedArrayController addObserver:self.signalView forKeyPath:@"arrangedObjects.floatValue" options:0 context:nil];
-    
+
     NSThread* SensorControllerThread=[[NSThread alloc]initWithTarget:sensorController selector:@selector(run) object:nil];
     [SensorControllerThread start];
     
@@ -79,17 +83,26 @@
     
 }
 
--(float) error
+-(void) error
 {
-    float error=0;
+    /*float error=0;
     float errorNoise=0;
+    NSLog(@"%@",self.noisedSignal);
     for (int i=0; i<[pureSignal count]; ++i) {
         error+=fabsf([pureSignal[i] floatValue]-[filtredSignal[i] floatValue]);
+        NSLog(@"%f",error);
         errorNoise+=fabsf([pureSignal[i] floatValue]-[noisedSignal[i] floatValue]);
     }
     [self.errorLabel setStringValue:[NSString stringWithFormat:@"%f",error]];
     [self.errorLabelNoise  setStringValue:[NSString stringWithFormat:@"%f",errorNoise]];
-    return error;
+    return error;*/
+   // NSLog(@"%@%@%@",self.pureSignal,self.noisedSignal,self.filtredSignal);
+    [sensorController wait];
+    
+    for (int i=0; i<[self.pureSignal count]; ++i) {
+        printf("%f\t%f\t%f\n",[pureSignal[i] floatValue],[noisedSignal[i] floatValue],[filtredSignal[i] floatValue]);
+    }
+    NSSet
 }
 
 @end

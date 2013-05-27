@@ -35,20 +35,15 @@
     float pureResult=result;
     
     //тут внести шум
-    NSLog(@"%f",result);
+
+    double noise = ((double)arc4random() / 0x100000000)*0.6;
     
-    [self performSelector:@selector(addNoiseError:) onThread:[NSThread mainThread] withObject:[NSNumber numberWithDouble: fabs(pureResult-result) ]waitUntilDone:YES];
+    if (rand()%2) noise=-noise;
+    result+=noise;
+    
+    [self.sharedPureArray performSelector:@selector(addObject:) onThread:[NSThread mainThread] withObject:[NSNumber numberWithFloat:pureResult] waitUntilDone:NO];
     return result;
 }
 
--(void) addNoiseError:(NSNumber *)e
-{
-    _sharedNoiseError+=[e doubleValue];
-}
-
--(double) sharedNoiseError
-{
-    return _sharedNoiseError;
-}
 
 @end
